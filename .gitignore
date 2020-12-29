@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+bot/config.py
+.python-version
+bot/handlers/test.py
