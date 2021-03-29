@@ -26,6 +26,16 @@ def init_log(log_level):
         )
 
 
+def init_persistence():
+    try:
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker, scoped_session
+        from persistence import sqlitepersistenece
+    except ModuleNotFoundError:
+        logger.warning("Persistence not initialize. Bot will save data to memory!")
+        return None
+
+
 def error(update, context):
     try:
         raise context.error
@@ -37,15 +47,16 @@ def error(update, context):
         update.effective_message.reply_text('Errors happen ¯\\_(ツ)_/¯')
         # msg_admin(context.bot, 'An error occurred on the bot. Check the logs')
 
+
 def add_update_handlers(dp):
     for handler in get_handlers():
         dp.add_handler(handler)
     return dp
 
 
-
 def main():
-    updater = Updater(config.TOKEN)
+    persistence_object = init_persistence()
+    updater = Updater(config.TOKEN, persistence=persistence_object)
 
     # Get the dispatcher to register handlers
     dispatcher = updater.dispatcher

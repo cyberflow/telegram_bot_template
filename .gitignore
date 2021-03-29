@@ -3,3 +3,4 @@ __pycache__/
 bot/config.py
 .python-version
 bot/handlers/test.py
+.vscode
