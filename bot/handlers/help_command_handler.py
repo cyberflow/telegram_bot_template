@@ -21,4 +21,4 @@ def help_factory():
     """
     /help - this command show docs for all commands available
     """
-    return CommandHandler("help", cmd_help, filters=Filters.chat_type.private)
+    return CommandHandler("help", cmd_help, filters=Filters.private)

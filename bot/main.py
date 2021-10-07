@@ -56,7 +56,7 @@ def add_update_handlers(dp):
 
 def main():
     persistence_object = init_persistence()
-    updater = Updater(config.TOKEN, persistence=persistence_object)
+    updater = Updater(config.TOKEN, use_context=True, persistence=persistence_object)
 
     # Get the dispatcher to register handlers
     dispatcher = updater.dispatcher
