@@ -30,7 +30,7 @@ def init_persistence():
     try:
         from sqlalchemy import create_engine
         from sqlalchemy.orm import sessionmaker, scoped_session
-        from persistence import sqlitepersistenece
+        from persistence import sqlitepersistence
     except ModuleNotFoundError:
         logger.warning("Persistence not initialize. Bot will save data to memory!")
         return None
