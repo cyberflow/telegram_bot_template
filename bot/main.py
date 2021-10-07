@@ -5,6 +5,7 @@ import sys
 import config
 
 from telegram.ext import Updater
+from telegram import Update
 
 from telegram.error import TelegramError
 from core import autodiscovery, get_handlers
@@ -69,7 +70,7 @@ def main():
     dispatcher.add_error_handler(error)
 
     # Start the Bot
-    updater.start_polling()
+    updater.start_polling(allowed_updates=Update.ALL_TYPES)
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
